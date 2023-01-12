@@ -1,48 +1,21 @@
-
-// local module
-const {add}=require('./other')
-
-// core module 
-// const  http = require('http');
-
-// const server = http.createServer(function(req, res){
-//     //write code here
-//   console.log("server is running");
-
-//   });
-//   server.listen(5000); 
-
-
-
-// third party module
-// const _=require('underscore')
-// var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
-// const res=_.pluck(stooges, 'name');
-
-// console.log(res);
-
+// class-8: explore url
 
 const  http = require('http');
+const  url = require('url');
 
 const server=http.createServer((req,res)=>{
-    if(req.url=== '/'){
-        res.writeHead(200, {'Content-Type':'application/json'});
-        res.write(JSON.stringify({course:"ACC"}));
-        res.end();
-    }
-    if(req.url=== '/contact'){
-        res.writeHead(200, {'Content-Type':'text/html'});
-        res.write('<p> This is contact page</p>');
-        res.end();
-    }
-    if(req.url=== '/about'){
-        res.writeHead(200, {'Content-Type':'text/html'});
-        res.write('<p> This is about us page</p>');
-        res.end();
-    }
+    const address_url="http://localhost:5000/contact?name=razu&country=banglsdesh";
+    
+    const parsed_url=url.parse(address_url,true)
+    // console.log(parsed_url);
+    const queryObject=parsed_url.query 
+    console.log(queryObject);
 })
 
 const PORT=5000;
-server.listen(PORT);
+server.listen(PORT)
 
-console.log(`server is running at ${PORT}`)
+console.log(`server is running at ${PORT}`);
+
+
+// 3 minuit done
